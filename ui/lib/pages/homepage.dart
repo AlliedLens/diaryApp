@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:ui/main.dart';
 import 'package:ui/widgets/diary_entry_card.dart';
 import 'package:ui/models/diaryEntry.dart';
 import 'package:http/http.dart' as http;
@@ -54,10 +53,14 @@ class _HomePageState extends State<HomePage> {
 
     if (response.statusCode == 200) {
       List<dynamic> body = jsonDecode(response.body);
-      return body.map((obj) => Diaryentry.fromJson(obj)).toList();    
+      List<Diaryentry> unfilteredDiaryEntries =  body.map((obj) => Diaryentry.fromJson(obj)).toList();
+
+      return unfilteredDiaryEntries.where((entry) => int.parse(entry.date.split('/')[0]) == selectedYear && int.parse(entry.date.split('/')[1]) == selectedMonth).toList();
+
     } else {
       throw Exception('Failed to load entries');
     }
+
   }
 
   @override
@@ -83,6 +86,8 @@ class _HomePageState extends State<HomePage> {
           tooltip: 'Move Behind',
           onPressed: (){
             updateMonth(-1);
+            print(selectedMonth);
+            entries = fetchDiaryEntries();
           },
         ),
 
@@ -92,6 +97,8 @@ class _HomePageState extends State<HomePage> {
             tooltip: 'Move Ahead',
             onPressed: (){
               updateMonth(1);
+              print(selectedMonth);
+              entries = fetchDiaryEntries();
             },
           ),
         
@@ -104,15 +111,18 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView(
-              children: snapshot.data!.map((entry) {
-                return Diaryentrycard(title: entry.title, entry: entry.entry, mood: entry.mood);
+              children: 
+              snapshot.data!.map((entry) {
+                return (
+                  Diaryentrycard(title: entry.title, entry: entry.entry, mood: entry.mood)
+                );
               }).toList(),
             );
           }else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }
 
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         },
       ),
 

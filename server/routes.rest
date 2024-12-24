@@ -10,69 +10,81 @@ Content-Type: application/json
         "entry": "Connection Events in mongoose: In Mongoose, connection events play an important role in monitoring and controlling the interaction between your Node.js application and MongoDB databases. Key connection events include: ",
         "mood": "worried",
         "tags": ["sports", "coding"],
-        "title": "Understanding Connection Events in Mongoose"
+        "title": "Understanding Connection Events in Mongoose",
+        "date": "2024/10/27"
     },
     {
         "entry": "Today I finally understood how to use aggregation in MongoDB. It's much more powerful than I initially thought!",
         "mood": "excited",
         "tags": ["coding", "mongodb", "learning"],
-        "title": "Mastering MongoDB Aggregation"
+        "title": "Mastering MongoDB Aggregation",
+        "date": "2024/10/4"
     },
     {
         "entry": "Had a great workout at the gym. Feeling energized and ready to tackle the rest of the week.",
         "mood": "energetic",
         "tags": ["fitness", "gym", "health"],
-        "title": "Energized After a Great Workout"
+        "title": "Energized After a Great Workout",
+        "date": "2024/11/5"
     },
     {
         "entry": "Spent the afternoon reading a fascinating book about the history of artificial intelligence. It's amazing how far the field has come.",
         "mood": "curious",
         "tags": ["reading", "ai", "history"],
-        "title": "Exploring the History of Artificial Intelligence"
+        "title": "Exploring the History of Artificial Intelligence",
+        "date": "2024/11/11"
     },
     {
         "entry": "Struggled with debugging a tricky JavaScript error for hours. Finally figured it out, though! Feeling relieved.",
         "mood": "relieved",
         "tags": ["coding", "javascript", "debugging"],
-        "title": "Overcoming a Tricky JavaScript Debugging Issue"
+        "title": "Overcoming a Tricky JavaScript Debugging Issue",
+        "date": "2024/10/16"
     },
     {
         "entry": "Went for a long walk in the park and enjoyed the beautiful autumn scenery. The colors are stunning.",
         "mood": "peaceful",
         "tags": ["nature", "autumn", "outdoors"],
-        "title": "Peaceful Walk in Autumn Scenery"
+        "title": "Peaceful Walk in Autumn Scenery",
+        "date": "2024/10/23"
     },
     {
         "entry": "Had a productive team meeting today. We made good progress on our project and everyone is on the same page.",
         "mood": "productive",
         "tags": ["work", "teamwork", "project"],
-        "title": "Productive Team Meeting"
+        "title": "Productive Team Meeting",
+        "date": "2024/12/27"
     },
     {
         "entry": "Felt a bit overwhelmed with work deadlines today. Need to prioritize and stay focused.",
         "mood": "stressed",
         "tags": ["work", "deadlines", "stress"],
-        "title": "Managing Stress from Work Deadlines"
+        "title": "Managing Stress from Work Deadlines",
+        "date": "2024/12/23"
     },
     {
         "entry": "Tried a new recipe for dinner tonight and it turned out delicious! I'm definitely adding it to my regular rotation.",
         "mood": "satisfied",
         "tags": ["cooking", "food", "recipes"],
-        "title": "A Successful New Dinner Recipe"
+        "title": "A Successful New Dinner Recipe",
+        "date": "2024/11/1"
     },
     {
         "entry": "Listened to some great music and relaxed after a long day. Music always helps me unwind.",
         "mood": "relaxed",
         "tags": ["music", "relaxation", "unwind"],
-        "title": "Relaxing with Music After a Long Day"
+        "title": "Relaxing with Music After a Long Day",
+        "date": "2024/11/26"
     },
     {
         "entry": "Discovered a new podcast that I'm really enjoying. It's about science and technology, which is right up my alley.",
         "mood": "intrigued",
         "tags": ["podcast", "science", "technology"],
-        "title": "Enjoying a Fascinating Science Podcast"
+        "title": "Enjoying a Fascinating Science Podcast",
+        "date": "2024/12/25"
     }
 ]
+
 
 ###
 DELETE http://localhost:3000/diaryentries/clear-all
