@@ -1,0 +1,4 @@
+1. dont use too many fonts 
+2. dont use too many colors
+3. dont use too many icon styles
+4. try not to have chaotic spacing
