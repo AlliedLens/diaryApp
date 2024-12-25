@@ -74,7 +74,7 @@ Content-Type: application/json
         "mood": "relaxed",
         "tags": ["music", "relaxation", "unwind"],
         "title": "Relaxing with Music After a Long Day",
-        "date": "2024/11/26"
+        "date": "2024/11/1"
     },
     {
         "entry": "Discovered a new podcast that I'm really enjoying. It's about science and technology, which is right up my alley.",

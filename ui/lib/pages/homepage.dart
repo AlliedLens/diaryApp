@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:ui/widgets/diary_entry_card.dart';
 import 'package:ui/models/diaryEntry.dart';
 import 'package:http/http.dart' as http;
+import 'package:ui/widgets/divider_with_text.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({super.key});
@@ -86,7 +87,6 @@ class _HomePageState extends State<HomePage> {
           tooltip: 'Move Behind',
           onPressed: (){
             updateMonth(-1);
-            print(selectedMonth);
             entries = fetchDiaryEntries();
           },
         ),
@@ -97,7 +97,6 @@ class _HomePageState extends State<HomePage> {
             tooltip: 'Move Ahead',
             onPressed: (){
               updateMonth(1);
-              print(selectedMonth);
               entries = fetchDiaryEntries();
             },
           ),
@@ -110,12 +109,27 @@ class _HomePageState extends State<HomePage> {
         future: entries,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            int divDay = -1;
             return ListView(
               children: 
               snapshot.data!.map((entry) {
-                return (
-                  Diaryentrycard(title: entry.title, entry: entry.entry, mood: entry.mood)
-                );
+                if (divDay != int.parse(entry.date.split('/')[2]) ){
+                  divDay = int.parse(entry.date.split('/')[2]);
+                  return Column(
+                    children: [
+                      DividerWithText(subtitle: entry.date),
+                      Diaryentrycard(title: entry.title, entry: entry.entry, mood: entry.mood),
+                    ],
+                  );
+                }else{
+                  return Column(
+                    children: [
+                      (
+                        Diaryentrycard(title: entry.title, entry: entry.entry, mood: entry.mood)
+                      ),
+                    ],
+                  );
+                }
               }).toList(),
             );
           }else if (snapshot.hasError) {
