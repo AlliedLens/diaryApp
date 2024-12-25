@@ -56,7 +56,13 @@ class _HomePageState extends State<HomePage> {
       List<dynamic> body = jsonDecode(response.body);
       List<Diaryentry> unfilteredDiaryEntries =  body.map((obj) => Diaryentry.fromJson(obj)).toList();
 
-      return unfilteredDiaryEntries.where((entry) => int.parse(entry.date.split('/')[0]) == selectedYear && int.parse(entry.date.split('/')[1]) == selectedMonth).toList();
+      List<Diaryentry> filteredDiaryEntries = unfilteredDiaryEntries.where(
+        (entry) => int.parse(entry.date.split('/')[0]) == selectedYear && int.parse(entry.date.split('/')[1]) == selectedMonth
+      ).toList();
+
+      filteredDiaryEntries.sort( (a, b) => int.parse(a.date.split('/')[2]).compareTo(int.parse(b.date.split('/')[2])) );
+
+      return filteredDiaryEntries;
 
     } else {
       throw Exception('Failed to load entries');

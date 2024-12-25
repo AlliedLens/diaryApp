@@ -50,7 +50,7 @@ class _MainState extends State<Main> {
       
       floatingActionButton: FloatingActionButton(
         onPressed: addEntry,
-        tooltip: 'Increment',
+        tooltip: 'add entry',
         child: const Icon(Icons.add),
       ),
       
@@ -88,11 +88,11 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (_currentPageIndex) {
       case 0:
-        return HomePage();
+        return const HomePage();
       case 1:
         return MoodsPage();
       case 2:
-        return UserPage();
+        return const UserPage();
       default:
         return const Center(child: Text('Unknown Page'));
     }
