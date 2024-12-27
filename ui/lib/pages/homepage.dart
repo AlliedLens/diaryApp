@@ -79,12 +79,12 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-
+    DateTime currDate = DateTime(selectedYear, selectedMonth, selectedDay) ;
     return  Scaffold(
       appBar: AppBar(
         title: Center(child: 
           Text(
-            DateFormat('MMM, y').format(DateTime(selectedYear, selectedMonth, selectedDay) )
+            DateFormat('MMM, y').format(currDate)
           )
         ),
 
@@ -119,11 +119,15 @@ class _HomePageState extends State<HomePage> {
             return ListView(
               children: 
               snapshot.data!.map((entry) {
+
+
                 if (divDay != int.parse(entry.date.split('/')[2]) ){
                   divDay = int.parse(entry.date.split('/')[2]);
+                  DateTime divDate = DateTime(selectedYear, selectedMonth, divDay);
+                  String formattedDate = DateFormat.EEEE().format(divDate);
                   return Column(
                     children: [
-                      DividerWithText(subtitle: entry.date),
+                      DividerWithText(subtitle: '$formattedDate, $divDay'),
                       Diaryentrycard(title: entry.title, entry: entry.entry, mood: entry.mood),
                     ],
                   );
