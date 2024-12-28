@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ui/pages/homepage.dart';
 import 'package:ui/pages/moodspage.dart';
+import 'package:ui/pages/newentrypage.dart';
 import 'package:ui/pages/userpage.dart';
 
 import 'package:ui/widgets/diary_entry_card.dart';
@@ -38,23 +39,12 @@ class Main extends StatefulWidget {
 class _MainState extends State<Main> {
   int currentPageIndex = 0;
 
-  void addEntry() {
-    print('add an entry');
-  }
-
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       body: Body(currentPageIndex: currentPageIndex),
       
-      floatingActionButton: FloatingActionButton(
-        onPressed: addEntry,
-        tooltip: 'add entry',
-        child: const Icon(Icons.add),
-      ),
-      
-
       bottomNavigationBar: NavigationBar(
         
         labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
@@ -68,8 +58,8 @@ class _MainState extends State<Main> {
 
         destinations: const<Widget>[
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.add_box_rounded), label: 'Add'),
           NavigationDestination(icon: Icon(Icons.mood), label: 'Moods'),
-          NavigationDestination(icon: Icon(Icons.account_circle), label: 'User')
         ]
       ), 
     );
@@ -90,9 +80,9 @@ class Body extends StatelessWidget {
       case 0:
         return const HomePage();
       case 1:
-        return MoodsPage();
+        return const Newentrypage();
       case 2:
-        return const UserPage();
+        return MoodsPage();
       default:
         return const Center(child: Text('Unknown Page'));
     }

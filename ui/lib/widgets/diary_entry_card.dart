@@ -48,10 +48,10 @@ class _DiaryentrycardState extends State<Diaryentrycard> {
                 ),
                 subtitle: Text(
                   widget.entry,
-                  maxLines: _isExpanded ? 20: 2, // Restrict to a single line
+                  maxLines: _isExpanded ? 50: 2, // Restrict to a single line
                   overflow: TextOverflow.ellipsis,
                 ),
-                trailing: Text(widget.mood),
+                leading: Text(widget.mood),
               ),
             ),
           ),

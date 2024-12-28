@@ -13,9 +13,9 @@ class DividerWithText extends StatelessWidget{
   Widget build(BuildContext context) {
     return 
       Row(children: [
-          const Expanded(child: const Divider()),
+          const Expanded(child: Divider()),
           Text(subtitle),
-          const Expanded(child: const Divider())
+          const Expanded(child: Divider())
         ]
     );
   }
