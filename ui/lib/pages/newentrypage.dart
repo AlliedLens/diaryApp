@@ -13,7 +13,7 @@ class _NewentrypageState extends State<Newentrypage> {
   DateTime? _selectedDate = DateTime.now();
   String _entry = "";
   String _title = "";
-  String _mood = "";
+  final String _mood = "";
   List<String> tags = [];
 
   final TextEditingController entryController = TextEditingController();
@@ -47,14 +47,15 @@ class _NewentrypageState extends State<Newentrypage> {
       _title = titleController.text;
     });
 
-    showDialog(context: context, builder: (context){
-      return AlertDialog( content: Text(_entry) );
-    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Entry logged for ${DateFormat.yMMMMEEEEd().format(_selectedDate ?? DateTime.now())}') 
+      )
+    );
 
 
-
-    entryController.text = "";
-    titleController.text = "";
+    entryController.clear();
+    titleController.clear();
 
   }
 
@@ -76,55 +77,78 @@ class _NewentrypageState extends State<Newentrypage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        InkWell(
-          onTap: () => datePicker(context),
 
-          child: Column(
-            children: [
-              const Divider(),
-              Text(
-                _selectedDate == null ? 'No date selected' : DateFormat.yMMMMEEEEd().format(_selectedDate ?? DateTime.now())
+    return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: ElevatedButton.icon(
+            onPressed: () => datePicker(context),
+            icon: const Icon(Icons.calendar_today),        
+            label: Text(
+              _selectedDate == null ? 'No date selected' : DateFormat.yMMMMEEEEd().format(_selectedDate ?? DateTime.now())
+            ),
+          ),
+        ),
+
+
+      ),
+      
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+
+            TextFormField(
+              controller: titleController,
+              decoration: InputDecoration(
+                border: const UnderlineInputBorder(),
+                labelText: "Title",
+                labelStyle: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black.withOpacity(0.4) )
               ),
-              const Divider(),
-            ],
-          ),
-        ),
+            ),
 
-        TextFormField(
-          controller: titleController,
-          decoration:  const InputDecoration(
-            border: UnderlineInputBorder(),
-            labelText: 'enter title',
-          ),
-        ), 
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
 
-        TextFormField(
-          controller: entryController,
+            TextFormField(
+              controller: entryController,
+              maxLines: 12,
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                labelText: 'Write about your day...',
+                labelStyle: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black.withOpacity(0.4) )
 
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Dear Diary...',
-          ),
-        ),
-
-        InkWell(
-          onTap: () => logEntry(context),
-          child: 
-          Column(
-            children: [
-              const Divider(),
-              Text(
-                ' Log ${entryController.text.split(' ').length} words'
               ),
-              const Divider(),
-            ],
-          ),
-        ),
+            ),
 
-      ],
+            // Word Count and Log Entry Button
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '${entryController.text.split(' ').length} words',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 14,
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () => logEntry(context),
+                  child: const Text("Save Entry"),
+                ),
+              ],
+            ),
+
+
+          ],
+        )
+      )
+
+
+
     );
+
   }
 }
