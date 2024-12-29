@@ -40,7 +40,7 @@ class _NewentrypageState extends State<Newentrypage> {
     }
   }
 
-  logEntry(BuildContext context) async{
+  void logEntry(BuildContext context) async{
 
     setState((){
       _entry = entryController.text;
@@ -48,8 +48,10 @@ class _NewentrypageState extends State<Newentrypage> {
     });
 
     showDialog(context: context, builder: (context){
-      return AlertDialog( content: Text(_title) );
+      return AlertDialog( content: Text(_entry) );
     });
+
+
 
     entryController.text = "";
     titleController.text = "";
@@ -61,6 +63,14 @@ class _NewentrypageState extends State<Newentrypage> {
     entryController.dispose();
     titleController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    entryController.addListener((){
+      setState( (){});
+    });
   }
 
 
@@ -103,19 +113,16 @@ class _NewentrypageState extends State<Newentrypage> {
         InkWell(
           onTap: () => logEntry(context),
           child: 
-          const Column(
+          Column(
             children: [
-              Divider(),
+              const Divider(),
               Text(
-                'Submit'
+                ' Log ${entryController.text.split(' ').length} words'
               ),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),
-
-
-
 
       ],
     );

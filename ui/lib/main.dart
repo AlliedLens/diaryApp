@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:ui/pages/homepage.dart';
 import 'package:ui/pages/moodspage.dart';
 import 'package:ui/pages/newentrypage.dart';
-import 'package:ui/pages/userpage.dart';
-
-import 'package:ui/widgets/diary_entry_card.dart';
 
 void main() {
   runApp(const MyApp());
