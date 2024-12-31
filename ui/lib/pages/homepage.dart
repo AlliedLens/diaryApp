@@ -84,8 +84,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Center(child: 
           Text(
-            DateFormat('MMM, y').format(currDate)
-          )
+            DateFormat('MMM, y').format(currDate),
+            style: const TextStyle(fontWeight: FontWeight.w800),
+            textScaler: const TextScaler.linear(1.75),
+          ), 
         ),
 
         leading: IconButton(

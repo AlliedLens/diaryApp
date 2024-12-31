@@ -14,7 +14,11 @@ class DividerWithText extends StatelessWidget{
     return 
       Row(children: [
           const Expanded(child: Divider()),
-          Text(subtitle),
+          Text(
+            subtitle,
+            textScaler: const TextScaler.linear(0.75),
+            style: const TextStyle(fontStyle: FontStyle.italic),
+          ),
           const Expanded(child: Divider())
         ]
     );

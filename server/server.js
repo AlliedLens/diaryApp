@@ -1,3 +1,5 @@
+//sudo service mongod start incase u get an error MongoError: connect ECONNREFUSED
+
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');

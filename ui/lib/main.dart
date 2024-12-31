@@ -56,7 +56,7 @@ class _MainState extends State<Main> {
         destinations: const<Widget>[
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.add_box_rounded), label: 'Add'),
-          NavigationDestination(icon: Icon(Icons.mood), label: 'Moods'),
+          // NavigationDestination(icon: Icon(Icons.mood), label: 'Moods'),
         ]
       ), 
     );
@@ -78,8 +78,6 @@ class Body extends StatelessWidget {
         return const HomePage();
       case 1:
         return const Newentrypage();
-      case 2:
-        return MoodsPage();
       default:
         return const Center(child: Text('Unknown Page'));
     }

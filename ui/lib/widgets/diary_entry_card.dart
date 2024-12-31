@@ -45,6 +45,8 @@ class _DiaryentrycardState extends State<Diaryentrycard> {
                   widget.title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
+                  textScaler: const TextScaler.linear(1.20),
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
                 subtitle: Text(
                   widget.entry,

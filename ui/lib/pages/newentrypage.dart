@@ -85,7 +85,8 @@ class _NewentrypageState extends State<Newentrypage> {
             onPressed: () => datePicker(context),
             icon: const Icon(Icons.calendar_today),        
             label: Text(
-              _selectedDate == null ? 'No date selected' : DateFormat.yMMMMEEEEd().format(_selectedDate ?? DateTime.now())
+              _selectedDate == null ? 'No date selected' : DateFormat.yMMMMEEEEd().format(_selectedDate ?? DateTime.now()),
+              textScaler: const TextScaler.linear(1.75),
             ),
           ),
         ),
@@ -134,19 +135,18 @@ class _NewentrypageState extends State<Newentrypage> {
                     fontSize: 14,
                   ),
                 ),
-                ElevatedButton(
-                  onPressed: () => logEntry(context),
-                  child: const Text("Save Entry"),
-                ),
               ],
             ),
 
 
           ],
         )
-      )
+      ),
 
-
+      floatingActionButton: ElevatedButton(
+        onPressed: () => logEntry(context),
+        child: const Text("Save Entry"),
+      ),
 
     );
 
